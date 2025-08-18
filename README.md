@@ -34,7 +34,3 @@ src/
         └── com/example/demo/
             └── DemoApplicationTests.java
 ```
-
-
-
-
