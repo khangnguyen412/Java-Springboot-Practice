@@ -1,12 +1,13 @@
-package com.example.JavaSpingBootPractice.controller.lecture1;
+package com.example.JavaSpingBootPractice.repository;
 
 import java.util.*;
 import org.springframework.web.bind.annotation.*;
+
+import com.example.JavaSpingBootPractice.controller.lecture1.Lecture1Book;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-
-import com.example.JavaSpingBootPractice.repository.*;
 
 @RestController
 @RequestMapping("/lecture1/api")

@@ -2,11 +2,13 @@
 - Kết nối cơ sở dữ liệu
 - kết nối DB qua file application.properties
 - các tham số:
-    + spring.datasource.url=jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:my_db}?useSSL=false
-    + spring.datasource.username=${DB_USER:root}
-    + spring.datasource.password=${DB_PASSWORD:123456}
+```
+spring.datasource.url=jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:my_db}?useSSL=false
+spring.datasource.username=${DB_USER:root}
+spring.datasource.password=${DB_PASSWORD:123456}
+```
 
-- Các kiểu dự liệu ánh xạ cơ bản
+## Các kiểu dự liệu ánh xạ cơ bản
 ```
 Java (JPA)	            MySQL	                PostgreSQL	    H2	            Mô tả
 String	                VARCHAR(255)	        VARCHAR	        VARCHAR 	    Chuỗi văn bản
@@ -22,12 +24,18 @@ byte[]	                BLOB	                BYTEA	        BYTEA	        Dữ li�
 BigDecimal	            DECIMAL(p,s)	        DECIMAL(p,s)	DECIMAL(p,s)	Số thập phân chính xác
 ```
 
-- Nguyên tắc đặt tên bảng, cột để sử dụng cho JPA
-    + Tên bảng: snake_case
-    + Tên cột: camelCase
-    + dùng @Column để ánh xạ các column
+## Nguyên tắc đặt tên bảng, cột để sử dụng cho JPA
+- Tên bảng: snake_case
+- Tên cột: camelCase
+- dùng @Column để ánh xạ các column
+- Nếu sử dụng findByOpenBranchId(int openBranchId) có sẳn của JPA thì phải theo quy tắt đặt tên của JPQL (method + TênThuộcTính)
 
-- Các phương CURD cơ bản của JpaRepository<Lecture2Model, Integer>
+## Nguyên tắc sử dụng @Query để custom query
+- Không gọi trực tiếp tên bảng
+- Không đc gọi trực tiếp tên bảng (ví dụ: account => Lecture2Model)
+- Chỉ đc gọi các cột đã ánh xạ (ví dụ: a.pending_balance =>  a.pendingBalance)
+
+## Các phương CURD cơ bản của JpaRepository <Lecture2Model, Integer>
 ```
 Phương thức	                        Công dụng
 save(S entity)	                    Lưu một entity mới hoặc cập nhật entity đã tồn tại.
@@ -44,4 +52,45 @@ deleteAll()	                        Xóa tất cả entities trong bảng.
 Phương thức phân trang
 findAll(Pageable pageable)	        Lấy entities theo phân trang (trả về Page<T>).
 findAll(Sort sort)	                Lấy tất cả entities và sắp xếp theo điều kiện.
+```
+
+## Quan hệ giữa các Entity trong JPA
+```
+Quan Hệ	        Annotation	    Mô Tả
+One-to-One	    @OneToOne	    1 bản ghi Entity A ↔ 1 bản ghi Entity B (ví dụ: User ↔ UserProfile)
+One-to-Many	    @OneToMany	    1 bản ghi Entity A ↔ N bản ghi Entity B (ví dụ: Category ↔ Product)
+Many-to-One	    @ManyToOne	    N bản ghi Entity A ↔ 1 bản ghi Entity B (ví dụ: Product ↔ Category)
+Many-to-Many	@ManyToMany	    N bản ghi Entity A ↔ N bản ghi Entity B (ví dụ: Student ↔ Course)
+```
+
+## Quan hệ One-to-One
+- Quan hệ 1-1 giữa 2 Entity
+- Cần xác định bên sở hữu quan hệ (owner) và bên tham chiếu (referenced)
+- Phía Owner 
+    + Là phía chứa khóa ngoại (foreign key) trong database.
+    + Dùng @JoinColumn để ánh xạ cột khóa ngoại.
+- Phía Referenced
+    + Dùng @OneToOne(mappedBy = "[key]") để  tham chiếu ngược lại Owning Side.
+    + Là phía không chứa khóa ngoại (foreign key) trong database.
+- Bên phía sở hữu quan hệ (owner)
+```
+@OneToOne
+@JoinColumn(name = "[foreign_key_column_name]") // foreign_key_column_name là tên cột khóa ngoại trong bảng Owner
+```
+- Bên phía tham chiếu (referenced)
+```
+@OneToOne(mappedBy = "[field_name]") // [field_name] Khai báo trong owning side
+```
+
+## Quan hệ One-to-Many
+- Bên phía một (One)
+```
+@OneToMany(mappedBy = "[key]") // Key là thuộc tính bảng Many, Tên field Java (không phải tên cột DB)
+private List<ManyEntity> manyEntities; // Thường dùng List/Set
+```
+- Bên phía nhiều (Many)
+- thêm (insertable = false, updatable = false) vào thuộc tính @Column để ngăn chặn JPA tự động cập nhật khóa ngoại
+```
+@ManyToOne
+@JoinColumn(name = "[key]") // Key là tên cột khóa ngoại trong bảng Many
 ```

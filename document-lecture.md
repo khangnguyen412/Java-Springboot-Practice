@@ -5,8 +5,8 @@
     - REST API cơ bản
 - Path: 
     - src/main/java/com/example/JavaSpingBootPractice/controller/lecture1/
-    - src/main/java/com/example/JavaSpingBootPractice/services/
     - src/main/java/com/example/JavaSpingBootPractice/repository/
+    - src/main/java/com/example/JavaSpingBootPractice/services/
     - src/main/java/com/example/JavaSpingBootPractice/utils/
 
 # Lecture 2
@@ -17,4 +17,18 @@
 - Path: 
     - src/main/java/com/example/JavaSpingBootPractice/controller/lecture2/
     - src/main/java/com/example/JavaSpingBootPractice/model/
+    - src/main/java/com/example/JavaSpingBootPractice/repository/
+    - src/main/java/com/example/JavaSpingBootPractice/services/
 
+# Lecture 3
+- Description: 
+    - @Valid, @Validated
+    - Exception Handling
+    - Logging & Testing
+- Path: 
+    - src/main/java/com/example/JavaSpingBootPractice/controller/lecture2/
+    - src/main/java/com/example/JavaSpingBootPractice/controller/lecture3/
+    - src/main/java/com/example/JavaSpingBootPractice/services/
+    - src/main/java/com/example/JavaSpingBootPractice/dto/
+    - src/main/java/com/example/JavaSpingBootPractice/validation/annotation/
+    - src/main/java/com/example/JavaSpingBootPractice/validation/validator/

@@ -1,17 +1,19 @@
 package com.example.JavaSpingBootPractice.model;
 
 import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.*;
 
 @Entity
 @Table(name = "account")
-public class Lecture2Model {
+public class Lecture2AccountModel {
     /**
      * @Id là khóa chính
      * @GeneratedValue tự động tăng
      */
     @Id
+    @Column(name = "account_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int account_id;
+    private int accountId;
 
     @Column(name = "avail_balance", nullable = true)
     private Float availBalance;
@@ -31,7 +33,7 @@ public class Lecture2Model {
     @Column(name = "status", nullable = true)
     private String status;
 
-    @Column(name = "cust_id", nullable = true)
+    @Column(name = "cust_id", nullable = true, insertable = false, updatable = false)
     private int custId;
 
     @Column(name = "open_branch_id", nullable = false)
@@ -44,11 +46,11 @@ public class Lecture2Model {
     private String productCd;
 
     public int getAccount_id() {
-        return account_id;
+        return accountId;
     }
 
-    public void setAccount_id(int account_id) {
-        this.account_id = account_id;
+    public void setAccount_id(int accountId) {
+        this.accountId = accountId;
     }
 
     public Float getAvail_balance() {
@@ -130,4 +132,9 @@ public class Lecture2Model {
     public void setProduct_cd(String product_cd) {
         this.productCd = product_cd;
     }
+
+    @ManyToOne
+    @JoinColumn(name = "cust_id")
+    @JsonBackReference // Dành cho phía "con"
+    private Lecture2CustomerModel customer;
 }
