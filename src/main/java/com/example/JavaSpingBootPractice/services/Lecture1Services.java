@@ -1,7 +1,8 @@
 package com.example.JavaSpingBootPractice.services;
 
-import com.example.JavaSpingBootPractice.controller.lecture1.Lecture1NotificationInterface;
 import org.springframework.stereotype.Service;
+
+import com.example.JavaSpingBootPractice.repository.Lecture1NotificationInterface;
 
 /**
  * @Service - Specialized Component

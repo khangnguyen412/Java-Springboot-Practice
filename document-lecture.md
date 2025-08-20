@@ -32,3 +32,14 @@
     - src/main/java/com/example/JavaSpingBootPractice/dto/
     - src/main/java/com/example/JavaSpingBootPractice/validation/annotation/
     - src/main/java/com/example/JavaSpingBootPractice/validation/validator/
+    - src/main/java/com/example/JavaSpingBootPractice/exception/
+
+# Lecture 4
+- Description: 
+    - Spring Security Cơ Bản
+    - JWT Authentication
+    - OAuth2 & Role-Based Access
+
+- Path: 
+    - src/main/java/com/example/JavaSpingBootPractice/controller/lecture4/
+    - src/main/java/com/example/JavaSpingBootPractice/security/

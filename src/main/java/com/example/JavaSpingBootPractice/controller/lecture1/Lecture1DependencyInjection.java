@@ -3,6 +3,7 @@ package com.example.JavaSpingBootPractice.controller.lecture1;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import com.example.JavaSpingBootPractice.repository.Lecture1NotificationInterface;
 import com.example.JavaSpingBootPractice.utils.*;
 
 @RestController

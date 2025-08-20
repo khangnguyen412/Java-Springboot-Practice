@@ -2,12 +2,15 @@ package com.example.JavaSpingBootPractice.services;
 
 import java.util.*;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import com.example.JavaSpingBootPractice.repository.*;
 import com.example.JavaSpingBootPractice.model.*;
 
 @Service
 public class Lecture2AccountServices {
+    private final Logger logger = LoggerFactory.getLogger(Lecture2AccountServices.class);
     private final Lecture2AcountRepository lecture2_account_repository;
 
     public Lecture2AccountServices(Lecture2AcountRepository lecture2_account_repository) {
@@ -18,6 +21,7 @@ public class Lecture2AccountServices {
      * Get account by id
      */
     public List<Lecture2AccountModel> get_all_account() {
+        logger.info("get all account");
         return lecture2_account_repository.findAll();
     }
 

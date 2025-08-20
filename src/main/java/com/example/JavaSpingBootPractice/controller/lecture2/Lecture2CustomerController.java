@@ -1,12 +1,11 @@
 package com.example.JavaSpingBootPractice.controller.lecture2;
 
 import java.util.*;
-import jakarta.validation.*;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import com.example.JavaSpingBootPractice.dto.Lecture3CustomerDTO;
-import com.example.JavaSpingBootPractice.model.*;
 import com.example.JavaSpingBootPractice.services.*;
 
 import jakarta.validation.Valid;
@@ -21,20 +20,18 @@ public class Lecture2CustomerController {
     }
 
     @GetMapping("/get-all")
-    public ResponseEntity<List<Lecture2CustomerModel>> get_all_customers() {
-        List<Lecture2CustomerModel> data = lecture2_customer_services.get_all_customers();
+    public ResponseEntity<?> get_all_customers() {
+        List<?> data = lecture2_customer_services.get_all_customers();
         if (lecture2_customer_services.get_all_customers().isEmpty()) {
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(" Ko tìm thấy khách hàng ");
         }
         return ResponseEntity.ok(data);
     }
 
     @PostMapping("/add")
-    public ResponseEntity<List<Lecture2CustomerModel>> add_customers(
-            @Valid @RequestBody Lecture3CustomerDTO customerDTO) {
+    public ResponseEntity<?> add_customers(@Valid @RequestBody Lecture3CustomerDTO customerDTO) {
         lecture2_customer_services.add_customer(customerDTO);
-        List<Lecture2CustomerModel> data = lecture2_customer_services.get_all_customers();
-
+        List<?> data = lecture2_customer_services.get_all_customers();
         return ResponseEntity.ok(data);
     }
 }

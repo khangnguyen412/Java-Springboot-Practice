@@ -10,7 +10,7 @@ import com.example.JavaSpingBootPractice.model.Lecture2AccountModel;
 public interface Lecture2AcountRepository extends JpaRepository<Lecture2AccountModel, Integer> {
     List<Lecture2AccountModel> findByOpenBranchId(int openBranchId);
 
-    @Query("SELECT a FROM Lecture2AccountModel a WHERE a.pendingBalance > 600")
+    @Query("SELECT a FROM Lecture2AccountModel a WHERE a.pendingBalance > :price")
     List<Lecture2AccountModel> fillterBalance(float price);
 
     /**

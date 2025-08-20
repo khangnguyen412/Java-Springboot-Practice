@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import com.example.JavaSpingBootPractice.repository.*;
 import com.example.JavaSpingBootPractice.model.*;
 import com.example.JavaSpingBootPractice.dto.*;
+import com.example.JavaSpingBootPractice.exception.CustomerNotFoundException;
 
 @Service
 public class Lecture2CustomerServices {
@@ -19,7 +20,11 @@ public class Lecture2CustomerServices {
      * Get account by id
      */
     public List<Lecture2CustomerModel> get_all_customers() {
-        return lecture2_customer_repository.findAll();
+        List<Lecture2CustomerModel> data = lecture2_customer_repository.findAll();
+        if (data.isEmpty()) {
+            throw new CustomerNotFoundException("Không tìm thấy khách hàng");
+        }
+        return data;
     }
 
     /**

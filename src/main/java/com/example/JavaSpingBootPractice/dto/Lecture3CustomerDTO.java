@@ -4,6 +4,8 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
+import com.example.JavaSpingBootPractice.validation.annotation.Lecture3FedidValid;
+
 public class Lecture3CustomerDTO {
     @NotBlank(message = "Address is required")
     private String address;
@@ -15,7 +17,7 @@ public class Lecture3CustomerDTO {
     private String cust_type_cd;
 
     @NotBlank(message = "Fed id is required")
-    @Size(min = 9, max = 12, message = "Mã số định danh phải từ 9 đến 12 ký tự")
+    @Lecture3FedidValid
     private String fed_id;
 
     @NotBlank(message = "Postal code is required")
