@@ -64,7 +64,7 @@ Many-to-Many	@ManyToMany	    N bản ghi Entity A ↔ N bản ghi Entity B (ví 
 ```
 
 ## Quan hệ One-to-One
-- Quan hệ 1-1 giữa 2 Entity
+- Quan hệ 1-1 giữa 2 Entity:
 - Cần xác định bên sở hữu quan hệ (owner) và bên tham chiếu (referenced)
 - Phía Owner 
     + Là phía chứa khóa ngoại (foreign key) trong database.
@@ -81,8 +81,21 @@ Many-to-Many	@ManyToMany	    N bản ghi Entity A ↔ N bản ghi Entity B (ví 
 ```
 @OneToOne(mappedBy = "[field_name]") // [field_name] Khai báo trong owning side
 ```
+ví dụ: 
+- Bên bảng account có:
+```
+private Lecture5EmployeeModel employee;
+```
+- Thì bên employee có:
+```
+@OneToOne(mappedBy = "employee", cascade = CascadeType.ALL)
+private List<Lecture2AccountModel> accounts;
+```
 
 ## Quan hệ One-to-Many
+- Xác định quan hệ 1-N giữa 2 Entity:
+    + Bảng nào chứa foreign key → đó là bảng nhiều (N).
+    + Bảng được tham chiếu (chứa PRIMARY KEY được FK trỏ tới) → đó là bảng một (1).
 - Bên phía một (One)
 ```
 @OneToMany(mappedBy = "[key]") // Key là thuộc tính bảng Many, Tên field Java (không phải tên cột DB)
@@ -94,3 +107,14 @@ private List<ManyEntity> manyEntities; // Thường dùng List/Set
 @ManyToOne
 @JoinColumn(name = "[key]") // Key là tên cột khóa ngoại trong bảng Many
 ```
+ví dụ: 
+- Bên bảng account có:
+```
+private Lecture5EmployeeModel employee;
+```
+- Thì bên employee có:
+```
+@OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
+private List<Lecture2AccountModel> accounts;
+```
+* Lưu ý: thêm 2 thuộc tính này vào "insertable = false, updatable = false" khi khai báo để ko bị lỗi duplicate field

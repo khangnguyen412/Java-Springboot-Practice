@@ -32,12 +32,12 @@ public class Lecture2CustomerServices {
      */
     public Lecture2CustomerModel add_customer(Lecture3CustomerDTO account) {
         Lecture2CustomerModel data = new Lecture2CustomerModel();
-        data.setAddress(account.getAddress());
-        data.setCity(account.getCity());
-        data.setCustTypeCd(account.getCust_type_cd());
-        data.setFedId(account.getFed_id());
-        data.setPostalCode(account.getPostal_code());
-        data.setState(account.getState());
+        data.set_address(account.get_address());
+        data.set_city(account.get_city());
+        data.set_cust_type_cd(account.get_cust_type_cd());
+        data.set_fed_id(account.get_fed_id());
+        data.set_postal_code(account.get_postal_code());
+        data.set_state(account.get_state());
         return lecture2_customer_repository.save(data);
     }
 }

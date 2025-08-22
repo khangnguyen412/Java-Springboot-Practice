@@ -11,9 +11,9 @@ import com.example.JavaSpingBootPractice.model.*;
 @Service
 public class Lecture2AccountServices {
     private final Logger logger = LoggerFactory.getLogger(Lecture2AccountServices.class);
-    private final Lecture2AcountRepository lecture2_account_repository;
+    private final Lecture2AccountRepository lecture2_account_repository;
 
-    public Lecture2AccountServices(Lecture2AcountRepository lecture2_account_repository) {
+    public Lecture2AccountServices(Lecture2AccountRepository lecture2_account_repository) {
         this.lecture2_account_repository = lecture2_account_repository;
     }
 

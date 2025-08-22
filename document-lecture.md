@@ -43,3 +43,15 @@
 - Path: 
     - src/main/java/com/example/JavaSpingBootPractice/controller/lecture4/
     - src/main/java/com/example/JavaSpingBootPractice/security/
+
+# Lecture 5
+- Description: 
+    - Advanced JPA
+    - Transaction Management
+    - Caching
+- Path: 
+    - src/main/java/com/example/JavaSpingBootPractice/controller/lecture5/
+    - src/main/java/com/example/JavaSpingBootPractice/services/
+    - src/main/java/com/example/JavaSpingBootPractice/model/
+
+# Lecture 6

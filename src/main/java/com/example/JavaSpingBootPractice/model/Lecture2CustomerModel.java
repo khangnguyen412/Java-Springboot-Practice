@@ -6,6 +6,12 @@ import com.fasterxml.jackson.annotation.*;
 
 @Entity
 @Table(name = "customer")
+/**
+ * Có thể dùng @NamedQueries({}) để tạo các nhóm @NamedQuery
+ * :custId trong @NamedQuery phải là tên Entity class chứ ko phải tên bảng
+ */
+@NamedQuery(name = "Lecture2CustomerModel.find_by_id", query = "SELECT c FROM Lecture2CustomerModel c where c.custId = :custId")
+@NamedQuery(name = "Lecture2CustomerModel.find_by_city", query = "SELECT c FROM Lecture2CustomerModel c where c.custId = :city")
 public class Lecture2CustomerModel {
     @Id
     @Column(name = "cust_id")
@@ -30,59 +36,66 @@ public class Lecture2CustomerModel {
     @Column(name = "state", nullable = true)
     private String state;
 
-    public void setCustId(int custId) {
+    /**
+     * Set property
+     */
+
+    public void set_cust_id(int custId) {
         this.custId = custId;
     }
 
-    public int getCustId() {
-        return custId;
-    }
-
-    public void setAddress(String address) {
+    public void set_address(String address) {
         this.address = address;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setCity(String city) {
+    public void set_city(String city) {
         this.city = city;
     }
 
-    public String getCity() {
-        return city;
-    }
-
-    public void setCustTypeCd(String custTypeCd) {
+    public void set_cust_type_cd(String custTypeCd) {
         this.custTypeCd = custTypeCd;
     }
 
-    public String getCustTypeCd() {
-        return custTypeCd;
-    }
-
-    public void setFedId(String fedId) {
+    public void set_fed_id(String fedId) {
         this.fedId = fedId;
     }
 
-    public String getFedId() {
-        return fedId;
-    }
-
-    public void setPostalCode(String postalCode) {
+    public void set_postal_code(String postalCode) {
         this.postalCode = postalCode;
     }
 
-    public String getPostalCode() {
-        return postalCode;
-    }
-
-    public void setState(String state) {
+    public void set_state(String state) {
         this.state = state;
     }
 
-    public String getState() {
+    /**
+     * Get property
+     */
+    public int get_cust_id() {
+        return custId;
+    }
+
+    public String get_address() {
+        return address;
+    }
+
+    public String get_city() {
+        return city;
+    }
+
+    public String get_cust_type_cd() {
+        return custTypeCd;
+    }
+
+    public String get_fed_id() {
+        return fedId;
+    }
+
+    public String get_postal_code() {
+        return postalCode;
+    }
+
+    public String get_state() {
         return state;
     }
 

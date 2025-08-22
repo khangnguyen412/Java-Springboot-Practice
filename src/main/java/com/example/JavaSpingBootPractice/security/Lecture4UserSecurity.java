@@ -24,5 +24,4 @@ public class Lecture4UserSecurity {
                 .password(passwordEncoder().encode("admin123")).roles("ADMIN").build();
         return new InMemoryUserDetailsManager(user, admin);
     }
-
 }

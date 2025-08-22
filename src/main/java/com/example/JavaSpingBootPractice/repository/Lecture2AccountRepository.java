@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.*;
 import com.example.JavaSpingBootPractice.model.Lecture2AccountModel;
 
 @Repository
-public interface Lecture2AcountRepository extends JpaRepository<Lecture2AccountModel, Integer> {
+public interface Lecture2AccountRepository extends JpaRepository<Lecture2AccountModel, Integer> {
     List<Lecture2AccountModel> findByOpenBranchId(int openBranchId);
 
     @Query("SELECT a FROM Lecture2AccountModel a WHERE a.pendingBalance > :price")
