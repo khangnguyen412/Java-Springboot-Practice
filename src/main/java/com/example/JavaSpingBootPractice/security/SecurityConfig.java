@@ -51,6 +51,8 @@ class SecurityConstants {
             "/lecture4/login",
             "/lecture4/api/public",
             "/lecture5/**",
+            "/lecture6/**",
+            "/actuator/**"
     };
 
     public static final String[] USER_ENDPOINTS = {

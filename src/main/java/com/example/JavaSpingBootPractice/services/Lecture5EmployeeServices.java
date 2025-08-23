@@ -1,11 +1,10 @@
 package com.example.JavaSpingBootPractice.services;
 
-import java.util.List;
+import java.util.*;
 import org.springframework.stereotype.*;
-import jakarta.transaction.Transactional;
-
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.*;
+import org.springframework.data.jpa.repository.*;
+import org.springframework.data.domain.*;
 
 import com.example.JavaSpingBootPractice.repository.*;
 import com.example.JavaSpingBootPractice.model.*;
@@ -34,6 +33,23 @@ public class Lecture5EmployeeServices {
         Lecture5EmployeeModel user_data = lecture5_employee_repository.findById(id).orElse(null);
         user_data.setFirstName(new_first_name);
         lecture5_employee_repository.save(user_data);
-        return lecture5_employee_repository.findByIdWithAccounts(id);
+        return user_data;
+    }
+
+    /**
+     * Sử dụng EntityGraph để load lazy
+     */
+    @EntityGraph(attributePaths = {"accounts"})
+    public Lecture5EmployeeModel get_employee_with_accounts_by_id(int id) {
+        Lecture5EmployeeModel employee_data = lecture5_employee_repository.findById(id).orElse(null);
+        return employee_data;
+    }
+
+    /**
+     * Sử dụng pagination
+     */
+    public Page<Lecture5EmployeeModel> get_employee_with_pagination(int page, int size){
+        Pageable pageable = PageRequest.of(page, size, Sort.by("empId").ascending());
+        return lecture5_employee_repository.findAll(pageable);
     }
 }

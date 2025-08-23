@@ -41,3 +41,9 @@
     + Ví dụ: join table customer và order dựa trên field custId.
 
 ## Caching
+- Caching là kỹ thuật lưu trữ dữ liệu tạm thời để tránh truy vấn lại cơ sở dữ liệu nhiều lần, từ đó cải thiện hiệu năng ứng dụng.
+- Các loại caching: 
+    + Hibernate L2 cache
+    + Cache ở tầng service/controller
+- Hibernate L2 cache(Đặt trên entity hoặc collection.): @Cache (org.hibernate.annotations.Cache)
+- Cache ở tầng service/controller (method result): @Cacheable, @CacheEvict, @CachePut

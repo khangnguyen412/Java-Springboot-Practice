@@ -5,7 +5,10 @@ import jakarta.persistence.*;
 import com.fasterxml.jackson.annotation.*;
 
 @Entity
-@Table(name = "customer")
+@Table(name = "customer", indexes = {
+        @Index(name = "idx_customer_fedid", columnList = "fed_id", unique = true),
+        @Index(name = "idx_customer_city_postal", columnList = "city, postal_code")
+})
 /**
  * Có thể dùng @NamedQueries({}) để tạo các nhóm @NamedQuery
  * :custId trong @NamedQuery phải là tên Entity class chứ ko phải tên bảng
