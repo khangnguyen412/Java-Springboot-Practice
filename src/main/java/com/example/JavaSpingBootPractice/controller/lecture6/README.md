@@ -79,3 +79,5 @@ EXPLAIN SELECT * FROM customer WHERE fed_id = '777-77-7777';
 
 
 ## Thread Pool Configuration
+- Mặc định, @Async và @Scheduled dùng thread pool nhỏ.
+- Bạn nên custom Executor để quản lý số lượng thread.

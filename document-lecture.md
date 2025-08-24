@@ -55,3 +55,12 @@
     - src/main/java/com/example/JavaSpingBootPractice/model/
 
 # Lecture 6
+- Description: 
+    - Database Optimization
+    - Performance Monitoring
+    - Async Processing
+- Path:
+    - src/main/java/com/example/JavaSpingBootPractice/config/
+    - src/main/java/com/example/JavaSpingBootPractice/controller/lecture6/
+    - src/main/java/com/example/JavaSpingBootPractice/services/
+    - src/main/java/com/example/JavaSpingBootPractice/model/
